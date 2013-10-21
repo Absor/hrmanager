@@ -1,4 +1,6 @@
 Hrmanager::Application.routes.draw do
+  root 'employees#index'
+
   resources :employees
 
   resources :rooms
