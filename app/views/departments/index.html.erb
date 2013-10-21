@@ -1,0 +1,41 @@
+<h1>Listing departments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Faculty</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <td><%= link_to department.name, department %></td>
+        <td><%= link_to department.faculty.name, department.faculty %></td>
+        <td><%= link_to 'Edit', edit_department_path(department) %></td>
+        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Department', new_department_path %>
+
+<br>
+<br>
+
+<%= link_to 'List of Employees', employees_path %>
+
+<br>
+
+<%= link_to 'List of Rooms', rooms_path %>
+
+<br>
+
+<%= link_to 'List of Faculties', faculties_path %>

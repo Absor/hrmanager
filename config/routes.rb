@@ -1,4 +1,12 @@
 Hrmanager::Application.routes.draw do
+  resources :employees
+
+  resources :rooms
+
+  resources :departments
+
+  resources :faculties
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
