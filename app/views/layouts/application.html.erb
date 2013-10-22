@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navi">
+  <%= link_to 'Employees', employees_path %>
+  <%= link_to 'Rooms', rooms_path %>
+  <%= link_to 'Departments', departments_path %>
+  <%= link_to 'Faculties', faculties_path %>
+</div>
 
 <%= yield %>
 
