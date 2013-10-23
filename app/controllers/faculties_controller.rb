@@ -1,6 +1,5 @@
 class FacultiesController < ApplicationController
   before_action :set_faculty, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate
 
   # GET /faculties
   # GET /faculties.json
@@ -78,13 +77,5 @@ class FacultiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def faculty_params
       params.require(:faculty).permit(:name)
-    end
-
-    def authenticate
-      admin_accounts = { "admin" => "secret", "heha" => "jepa"}
-
-      authenticate_or_request_with_http_basic do |username, password|
-        admin_accounts[username] == password
-      end
     end
 end
