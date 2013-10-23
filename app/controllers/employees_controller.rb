@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_items, only: [:new, :edit, :update, :destroy]
 
   # GET /employees
   # GET /employees.json
@@ -15,14 +16,10 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
-    @rooms = Room.all
-    @departments = Department.all
   end
 
   # GET /employees/1/edit
   def edit
-    @rooms = Room.all
-    @departments = Department.all
   end
 
   # POST /employees
@@ -35,8 +32,6 @@ class EmployeesController < ApplicationController
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render action: 'show', status: :created, location: @employee }
       else
-        @rooms = Room.all
-        @departments = Department.all
         format.html { render action: 'new' }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
@@ -71,6 +66,11 @@ class EmployeesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
+    end
+
+    def set_select_items
+      @rooms = Room.all
+      @departments = Department.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

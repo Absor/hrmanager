@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_items, only: [:new, :edit, :update, :destroy]
 
   # GET /departments
   # GET /departments.json
@@ -15,12 +16,10 @@ class DepartmentsController < ApplicationController
   # GET /departments/new
   def new
     @department = Department.new
-    @faculties = Faculty.all
   end
 
   # GET /departments/1/edit
   def edit
-    @faculties = Faculty.all
   end
 
   # POST /departments
@@ -33,7 +32,6 @@ class DepartmentsController < ApplicationController
         format.html { redirect_to @department, notice: 'Department was successfully created.' }
         format.json { render action: 'show', status: :created, location: @department }
       else
-        @faculties = Faculty.all
         format.html { render action: 'new' }
         format.json { render json: @department.errors, status: :unprocessable_entity }
       end
@@ -82,5 +80,9 @@ class DepartmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
       params.require(:department).permit(:name, :faculty_id)
+    end
+
+    def set_select_items
+      @faculties = Faculty.all
     end
 end
