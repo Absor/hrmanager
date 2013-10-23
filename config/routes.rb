@@ -1,9 +1,16 @@
 Hrmanager::Application.routes.draw do
+
+  root 'employees#index'
+
+  get 'sign_in', to: 'sessions#new'
+
+  delete 'sign_out', to: 'sessions#destroy'
+
+  resources :users
+
   resources :research_group_memberships
 
   resources :research_groups
-
-  root 'employees#index'
 
   resources :employees
 
@@ -12,6 +19,8 @@ Hrmanager::Application.routes.draw do
   resources :departments
 
   resources :faculties
+
+  resources :sessions, :only => [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

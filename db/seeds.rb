@@ -50,3 +50,5 @@ rg2.members << e3
 
 rg3.members << e1
 rg3.members << e3
+
+User.create :username => "admin", :password => "testtest", :password_confirmation => "testtest"
