@@ -20,6 +20,7 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/1/edit
   def edit
+    @faculties = Faculty.all
   end
 
   # POST /departments
@@ -55,11 +56,20 @@ class DepartmentsController < ApplicationController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
-    @department.destroy
-    respond_to do |format|
-      format.html { redirect_to departments_url }
-      format.json { head :no_content }
+    if @department.employees.empty?
+      @department.destroy
+      respond_to do |format|
+        format.html { redirect_to departments_url }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back, :alert => 'Can not delete department. Department has employees.' }
+        format.json { head :unprocessable_entity }
+      end
     end
+
+
   end
 
   private

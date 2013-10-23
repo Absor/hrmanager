@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @room.name %>
+</h1>
+
+<p>
+
+  <% if not @room.employees.empty? %>
+      <strong>Persons using this room:</strong>
+      <ul>
+      <% for employee in @room.employees  %>
+          <li><%= link_to employee.name, employee %></li>
+      <% end %>
+      </ul>
+  <% else %>
+        No one uses this room.
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<%= link_to 'Edit', edit_room_path(@room) %>

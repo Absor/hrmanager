@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @faculty.name %>
+</h1>
+
+<p>
+  <strong>Departments:</strong>
+<ul>
+  <% if not @faculty.departments.empty? %>
+      <% for department in @faculty.departments  %>
+          <li><%= link_to department.name, department %></li>
+      <% end %>
+  <% else %>
+      <li>No departments.</li>
+  <% end %>
+</ul>
 </p>
 
-<%= link_to 'Edit', edit_faculty_path(@faculty) %> |
-<%= link_to 'Back', faculties_path %>
+<%= link_to 'Edit', edit_faculty_path(@faculty) %>

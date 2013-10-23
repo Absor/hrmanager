@@ -32,3 +32,21 @@ e3 = Employee.new :name => "Taina Mäyrä", :email => "taina.mayra@imagina.ry"
 e3.department = d1
 e3.room = r1
 e3.save
+
+e4 = Employee.new :name => "Tero Puolio", :email => "tero.puolio@imagina.ry"
+e4.department = d6
+e4.room = r3
+e4.save
+
+rg1 = ResearchGroup.create :name => "Group Nice"
+rg2 = ResearchGroup.create :name => "Group Badger"
+rg3 = ResearchGroup.create :name => "Group Bear"
+
+rg1.members << e1
+rg1.members << e2
+
+rg2.members << e2
+rg2.members << e3
+
+rg3.members << e1
+rg3.members << e3

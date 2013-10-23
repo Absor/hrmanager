@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @research_group.name %>
+</h1>
+
+<p>
+  <strong>Members:</strong>
+<ul>
+  <% if not @research_group.members.empty? %>
+      <% for member in @research_group.members  %>
+          <li><%= link_to member.name, member %></li>
+      <% end %>
+  <% else %>
+      <li>No members.</li>
+  <% end %>
+</ul>
+</p>
+
+<%= link_to 'Edit', edit_research_group_path(@research_group) %>

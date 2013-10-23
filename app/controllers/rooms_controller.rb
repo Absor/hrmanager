@@ -54,10 +54,17 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
-    @room.destroy
-    respond_to do |format|
-      format.html { redirect_to rooms_url }
-      format.json { head :no_content }
+    if @room.employees.empty?
+      @room.destroy
+      respond_to do |format|
+        format.html { redirect_to rooms_url }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back, :alert => 'Can not delete room. Room is not empty.' }
+        format.json { head :unprocessable_entity }
+      end
     end
   end
 

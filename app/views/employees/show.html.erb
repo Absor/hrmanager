@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @employee.name %>
-</p>
+</h1>
 
 <p>
   <strong>Email:</strong>
-  <%= @employee.email %>
+  <%= mail_to @employee.email %>
 </p>
 
 <p>
   <strong>Room:</strong>
-  <%= @employee.room_id %>
+  <%= link_to @employee.room.name, @employee.room %>
 </p>
 
 <p>
   <strong>Department:</strong>
-  <%= @employee.department_id %>
+  <%= link_to @employee.department.name, @employee.department %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<p>
+  <strong>Research groups:</strong>
+  <ul>
+  <% if not @employee.research_groups.empty? %>
+    <% for group in @employee.research_groups  %>
+        <li><%= link_to group.name, group %></li>
+    <% end %>
+  <% else %>
+        <li>No groups.</li>
+  <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %>

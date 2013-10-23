@@ -1,0 +1,2 @@
+module ResearchGroupMembershipsHelper
+end

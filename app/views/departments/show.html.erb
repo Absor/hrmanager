@@ -1,14 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @department.name %>
+</h1>
+
+<p>
+  Part of <%= link_to @department.faculty.name, @department.faculty %>
 </p>
 
 <p>
-  <strong>Faculty:</strong>
-  <%= @department.faculty_id %>
+  <strong>Employees:</strong>
+<ul>
+  <% if not @department.employees.empty? %>
+      <% for employee in @department.employees  %>
+          <li><%= link_to employee.name, employee %></li>
+      <% end %>
+  <% else %>
+      <li>No employees.</li>
+  <% end %>
+</ul>
 </p>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+<%= link_to 'Edit', edit_department_path(@department) %>

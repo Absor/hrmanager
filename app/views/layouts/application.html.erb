@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hrmanager</title>
+  <title>HR Manager</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -12,6 +12,7 @@
   <%= link_to 'Rooms', rooms_path %>
   <%= link_to 'Departments', departments_path %>
   <%= link_to 'Faculties', faculties_path %>
+  <%= link_to 'Research groups', research_groups_path %>
 </div>
 
 <%= yield %>

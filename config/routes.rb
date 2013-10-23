@@ -1,4 +1,8 @@
 Hrmanager::Application.routes.draw do
+  resources :research_group_memberships
+
+  resources :research_groups
+
   root 'employees#index'
 
   resources :employees

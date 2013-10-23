@@ -55,10 +55,17 @@ class FacultiesController < ApplicationController
   # DELETE /faculties/1
   # DELETE /faculties/1.json
   def destroy
-    @faculty.destroy
-    respond_to do |format|
-      format.html { redirect_to faculties_url }
-      format.json { head :no_content }
+    if @faculty.departments.empty?
+      @faculty.destroy
+      respond_to do |format|
+        format.html { redirect_to faculties_url }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back, :alert => 'Can not delete faculty. Faculty has departments.' }
+        format.json { head :unprocessable_entity }
+      end
     end
   end
 

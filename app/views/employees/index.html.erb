@@ -9,7 +9,6 @@
       <th>Department</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -17,7 +16,7 @@
     <% @employees.each do |employee| %>
       <tr>
         <td><%= link_to employee.name, employee %></td>
-        <td><%= employee.email %></td>
+        <td><%= mail_to employee.email %></td>
         <td><%= link_to employee.room.name, employee.room %></td>
         <td><%= link_to employee.department.name, employee.department %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
