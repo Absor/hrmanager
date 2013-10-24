@@ -17,4 +17,4 @@
 </ul>
 </p>
 
-<%= link_to 'Edit', edit_faculty_path(@faculty) %>
+<%= link_to 'Edit', edit_faculty_path(@faculty) if currently_signed_in? %>

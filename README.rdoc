@@ -1,1 +1,0 @@
-http://absor-hrmanager.herokuapp.com/

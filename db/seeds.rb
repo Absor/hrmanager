@@ -44,6 +44,7 @@ rg3 = ResearchGroup.create :name => "Group Bear"
 
 rg1.members << e1
 rg1.members << e2
+rg1.members << e3
 
 rg2.members << e2
 rg2.members << e3

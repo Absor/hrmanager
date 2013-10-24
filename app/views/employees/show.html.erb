@@ -20,9 +20,9 @@
 </p>
 
 <p>
-  <strong>Research groups:</strong>
+  <strong>Employee's research groups:</strong>
   <ul>
-  <% if not @employee.research_groups.empty? %>
+  <% unless @employee.research_groups.empty? %>
     <% for group in @employee.research_groups  %>
         <li><%= link_to group.name, group %></li>
     <% end %>
@@ -30,6 +30,14 @@
         <li>No groups.</li>
   <% end %>
   </ul>
+
+  <% unless @employee.research_groups.empty? %>
+  <strong>of which</strong>
+  <ul>
+        <li>the group with least members is <%= link_to @employee.research_group_with_least_members.name, @employee.research_group_with_least_members %>.</li>
+        <li>the group with most members is <%= link_to @employee.research_group_with_most_members.name, @employee.research_group_with_most_members %>.</li>
+  </ul>
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %>
+<%= link_to 'Edit', edit_employee_path(@employee) if currently_signed_in? %>

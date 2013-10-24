@@ -1,4 +1,5 @@
 class ResearchGroupMembershipsController < ApplicationController
+  before_action :require_login
   before_action :set_research_group_membership, only: [:show, :edit, :update, :destroy]
 
   # GET /research_group_memberships

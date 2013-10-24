@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
   before_action :set_department, only: [:show, :edit, :update, :destroy]
   before_action :set_select_items, only: [:new, :edit, :update, :destroy]
 

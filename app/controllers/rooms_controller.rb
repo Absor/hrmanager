@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms

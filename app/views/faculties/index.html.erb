@@ -15,8 +15,8 @@
     <% @faculties.each do |faculty| %>
       <tr>
         <td><%= link_to faculty.name, faculty %></td>
-        <td><%= link_to 'Edit', edit_faculty_path(faculty) %></td>
-        <td><%= link_to 'Destroy', faculty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_faculty_path(faculty) if currently_signed_in? %></td>
+        <td><%= link_to 'Destroy', faculty, method: :delete, data: { confirm: 'Are you sure?' } if currently_signed_in? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Faculty', new_faculty_path %>
+<%= link_to 'New Faculty', new_faculty_path if currently_signed_in? %>

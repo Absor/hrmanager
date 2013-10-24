@@ -5,4 +5,13 @@ class Employee < ActiveRecord::Base
   has_many :research_groups, :through => :research_group_memberships
 
   validates_presence_of :name, :email, :room, :department
+
+
+  def research_group_with_most_members
+    research_groups.sort_by{|group| group.members.count}.last
+  end
+
+  def research_group_with_least_members
+    research_groups.sort_by{|group| group.members.count}.first
+  end
 end

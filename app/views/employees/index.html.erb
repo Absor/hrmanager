@@ -1,5 +1,7 @@
 <h1>Listing employees</h1>
 
+<p id="alert"><%= alert %></p>
+
 <table>
   <thead>
     <tr>
@@ -19,8 +21,8 @@
         <td><%= mail_to employee.email %></td>
         <td><%= link_to employee.room.name, employee.room %></td>
         <td><%= link_to employee.department.name, employee.department %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) if currently_signed_in? %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } if currently_signed_in? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to 'New Employee', new_employee_path if currently_signed_in? %>

@@ -13,8 +13,8 @@
     <% @research_groups.each do |research_group| %>
       <tr>
         <td><%= link_to research_group.name, research_group %></td>
-        <td><%= link_to 'Edit', edit_research_group_path(research_group) %></td>
-        <td><%= link_to 'Destroy', research_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_research_group_path(research_group) if currently_signed_in? %></td>
+        <td><%= link_to 'Destroy', research_group, method: :delete, data: { confirm: 'Are you sure?' } if currently_signed_in? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Research group', new_research_group_path %>
+<%= link_to 'New Research group', new_research_group_path if currently_signed_in? %>

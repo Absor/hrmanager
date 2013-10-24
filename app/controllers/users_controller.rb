@@ -55,6 +55,10 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    if current_user == @user
+      redirect_to :root, :alert => "You can't delete yourself."
+      return
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url }

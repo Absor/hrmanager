@@ -17,4 +17,4 @@
 </ul>
 </p>
 
-<%= link_to 'Edit', edit_research_group_path(@research_group) %>
+<%= link_to 'Edit', edit_research_group_path(@research_group) if currently_signed_in? %>

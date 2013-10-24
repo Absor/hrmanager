@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
     def require_login
       unless currently_signed_in?
-        redirect_to :root
+        redirect_to :root, :alert => "No permission."
       end
     end
 end

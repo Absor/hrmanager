@@ -17,8 +17,8 @@
       <tr>
         <td><%= link_to department.name, department %></td>
         <td><%= link_to department.faculty.name, department.faculty %></td>
-        <td><%= link_to 'Edit', edit_department_path(department) %></td>
-        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_department_path(department) if currently_signed_in? %></td>
+        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } if currently_signed_in? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Department', new_department_path %>
+<%= link_to 'New Department', new_department_path if currently_signed_in? %>

@@ -18,4 +18,4 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_room_path(@room) %>
+<%= link_to 'Edit', edit_room_path(@room) if currently_signed_in? %>

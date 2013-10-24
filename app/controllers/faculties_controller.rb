@@ -1,4 +1,5 @@
 class FacultiesController < ApplicationController
+  before_action :require_login, except: [:index, :show]
   before_action :set_faculty, only: [:show, :edit, :update, :destroy]
 
   # GET /faculties
